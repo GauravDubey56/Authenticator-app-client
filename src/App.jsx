@@ -5,17 +5,37 @@ import Hero from "./Components/Hero";
 // import Details from "./Components/Details";
 // import GetStarted from "./Components/GetStarted";
 import Footer from "./Components/Footer";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 // eslint-disable-next-line
+      // {/* <Companies />
+      // <Guide />
+      // <Properties />
+      // <Details />
+      // <GetStarted /> */}
+const HomePage = () => {
+  return (<>      
+  <Hero />
+  <Footer />
+  </>)
+}
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage />,
+    },
+    {
+      path: "/home",
+      element: <HomePage />,
+    },
+  ]);
+  
   return (
     <>
-      <Hero />
-      {/* <Companies />
-      <Guide />
-      <Properties />
-      <Details />
-      <GetStarted /> */}
-      <Footer />
+      <RouterProvider router={router} />
     </>
   );
 }

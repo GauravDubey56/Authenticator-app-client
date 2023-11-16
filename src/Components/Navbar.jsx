@@ -22,6 +22,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { LinkOffTwoTone } from "@mui/icons-material";
+import { GITHUB_AUTH_URL } from "../config/config";
 
 export const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState({
@@ -158,6 +159,7 @@ export const Navbar = () => {
         <CustomButton
           backgroundColor="#0F1B4C"
           color="#fff"
+          linkUrl={GITHUB_AUTH_URL}
           buttonText="Login with GitHub"
         />
       </Box>

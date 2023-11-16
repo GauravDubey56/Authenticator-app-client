@@ -9,6 +9,7 @@ const CustomButton = ({
   heroBtn,
   guideBtn,
   getStartedBtn,
+  linkUrl
 }) => {
   const CustomButton = styled(Button)(({ theme }) => ({
     backgroundColor: backgroundColor,
@@ -36,7 +37,9 @@ const CustomButton = ({
     },
   }));
 
-  return <CustomButton>{buttonComponent ? buttonComponent : buttonText}</CustomButton>;
+  return <CustomButton     {...(linkUrl && {href: linkUrl})}>
+    {buttonComponent ? buttonComponent : buttonText}
+    </CustomButton>;
 };
 
 export default CustomButton;
