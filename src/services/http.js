@@ -49,6 +49,3 @@ export const apiRequest = async ({
         }
     }
 }
-export const redirectToGithub = () => {
-    
-}

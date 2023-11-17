@@ -1,38 +1,40 @@
-// import Companies from "./Components/Companies";
-// import Guide from "./Components/Guide";
-import Hero from "./Components/Hero";
-// import Properties from "./Components/Properties";
-// import Details from "./Components/Details";
-// import GetStarted from "./Components/GetStarted";
-import Footer from "./Components/Footer";
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-// eslint-disable-next-line
-      // {/* <Companies />
-      // <Guide />
-      // <Properties />
-      // <Details />
-      // <GetStarted /> */}
-const HomePage = () => {
-  return (<>      
-  <Hero />
-  <Footer />
-  </>)
-}
+import GithubCallback from "./pages/auth/GithubCallback";
+import LandingPage from "./pages/home/LandingPage";
+import { getLocalKey } from "./services/localstorage";
+import Dashboard from "./pages/home/Dashboard";
 function App() {
-  const router = createBrowserRouter([
+  const navigation=[
     {
+      path: "/auth/githubCallback",
+      element: <GithubCallback />
+    }
+  ]
+  const token = getLocalKey('AuthToken');
+  console.log(`fetching token`, token);
+  if(token) {
+    navigation.push({
       path: "/",
-      element: <HomePage />,
+      element: <Dashboard />,
     },
     {
       path: "/home",
-      element: <HomePage />,
+      element: <Dashboard />,
+    })
+  } else {
+    navigation.push({
+      path: "/",
+      element: <LandingPage />,
     },
-  ]);
-  
+    {
+      path: "/home",
+      element: <LandingPage />,
+    })
+  }
+  const router = createBrowserRouter(navigation);
   return (
     <>
       <RouterProvider router={router} />
